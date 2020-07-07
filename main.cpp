@@ -1,7 +1,6 @@
 class Solution {
 public:
     vector<int> replaceElements(vector<int>& arr) {
-        vector<int> ret(arr.size());
         int lastMaxIndex = -1;
         
         for (int i = 0; i < arr.size(); ++i) {
@@ -22,8 +21,8 @@ public:
                     }
                 }
             }
-            ret[i] = max;
+            arr[i] = max;
         }
-        return ret;
+        return arr;
     }
 };
