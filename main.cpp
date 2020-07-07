@@ -1,27 +1,16 @@
 class Solution {
 public:
     vector<int> replaceElements(vector<int>& arr) {
-        int lastMaxIndex = -1;
+        int previousMax = -1;
         
-        for (int i = 0; i < arr.size(); ++i) {
-            int max = -1;
+        for (int i = arr.size() - 1; i >= 0; --i) {
+            int currentElement = arr[i];
             
-            if (lastMaxIndex > i) {
-                max = arr[lastMaxIndex];
-            }
-            else {
-                if (i + 1 < arr.size()) {
-                    max = arr[i + 1];
-                }
+            arr[i] = previousMax;
             
-                for (int j = i + 2; j < arr.size(); ++j) {
-                    if (arr[j] > max) {
-                        max = arr[j];
-                        lastMaxIndex = j;
-                    }
-                }
+            if (currentElement > previousMax) {
+                previousMax = currentElement;
             }
-            arr[i] = max;
         }
         return arr;
     }
